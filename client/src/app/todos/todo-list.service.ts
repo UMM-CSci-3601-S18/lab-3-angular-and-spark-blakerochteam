@@ -13,11 +13,11 @@ export class TodoListService {
   constructor(private httpClient: HttpClient) {
   }
 
-  getUsers(): Observable<Todo[]> {
+  getTodos(): Observable<Todo[]> {
     return this.httpClient.get<Todo[]>(this.todoUrl);
   }
 
-  getUserById(id: string): Observable<Todo> {
+  getTodosById(id: string): Observable<Todo> {
     return this.httpClient.get<Todo>(this.todoUrl + '/' + id);
   }
 }
