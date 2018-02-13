@@ -67,8 +67,8 @@ export class TodoListComponent implements OnInit {
    * Starts an asynchronous operation to update the users list
    *
    */
-  refreshUsers(): Observable<Todo[]> {
-    // Get Users returns an Observable, basically a "promise" that
+  refreshTodos(): Observable<Todo[]> {
+    // Get Todos returns an Observable, basically a "promise" that
     // we will get the data from the server.
     //
     // Subscribe waits until the data is fully downloaded, then
