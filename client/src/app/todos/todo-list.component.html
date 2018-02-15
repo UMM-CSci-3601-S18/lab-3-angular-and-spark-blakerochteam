@@ -22,12 +22,13 @@
         </mat-form-field>
 
         <mat-accordion *ngIf="todos; else todosError">
-          <mat-expansion-panel #elem [id]="todo" *ngFor="let todo of this.filterTodos(todoAuthor, todoStatus, todoCategory, todoBody)">
-
-            <mat-panel-description>{{todo.name}} owns this.</mat-panel-description>
-            <mat-panel-description>Status: {{todo.status}} years old</mat-panel-description>
-            <mat-panel-description>{{todo.body}}</mat-panel-description>
+          <mat-expansion-panel #elem [id]="todo.id" *ngFor="let todo of this.filterTodos(todoAuthor, todoStatus, todoCategory, todoBody)">
+            <mat-expansion-panel-header>{{todo.owner}}</mat-expansion-panel-header>
+            <mat-panel-description>{{todo.owner}} owns this.</mat-panel-description>
+            <mat-panel-description>Completed: {{todo.status}}</mat-panel-description>
             <mat-panel-description>Category: {{todo.category}}</mat-panel-description>
+            <mat-panel-description>{{todo.body}}</mat-panel-description>
+
 
           </mat-expansion-panel>
         </mat-accordion>

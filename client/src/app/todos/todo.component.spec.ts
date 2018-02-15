@@ -20,21 +20,21 @@ describe('Todo component', () => {
       getTodoById: (todoId: string) => Observable.of([
         {
           id: 'blanche_id',
-          name: 'Blanche',
+          owner: 'Blanche',
           status: false,
           category: 'software design',
           body: 'In sunt ex non tempor cillum commodo amet incididunt anim qui commodo quis. Cillum non labore ex sint esse.'
         },
         {
           id: 'pat_id',
-          name: 'Pat',
+          owner: 'Pat',
           status: true,
           category: 'IBM',
           body: 'pat@something.com'
         },
         {
           id: 'jamie_id',
-          name: 'Jamie',
+          owner: 'Jamie',
           status: false,
           category: 'Frogs, Inc.',
           body: 'jamie@frogs.com'
@@ -58,7 +58,7 @@ describe('Todo component', () => {
   it('can retrieve Blanche by ID', () => {
     todoComponent.setId('blanche_id');
     expect(todoComponent.todo).toBeDefined();
-    expect(todoComponent.todo.name).toBe('Blanche');
+    expect(todoComponent.todo.owner).toBe('Blanche');
     expect(todoComponent.todo.status).toBe(false);
     expect(todoComponent.todo.body).toBe("In sunt ex non tempor cillum commodo amet incididunt anim qui commodo quis. Cillum non labore ex sint esse.");
     expect(todoComponent.todo.category).toBe("software design");
