@@ -19,11 +19,11 @@ describe('Todo component', () => {
     todoListServiceStub = {
       getTodoById: (todoId: string) => Observable.of([
         {
-          id: 'chris_id',
-          name: 'Chris',
+          id: 'blanche_id',
+          name: 'Blanche',
           status: false,
-          category: 'UMM',
-          body: 'chris@this.that'
+          category: 'software design',
+          body: 'In sunt ex non tempor cillum commodo amet incididunt anim qui commodo quis. Cillum non labore ex sint esse.'
         },
         {
           id: 'pat_id',
@@ -55,16 +55,18 @@ describe('Todo component', () => {
     });
   }));
 
-  it('can retrieve Pat by ID', () => {
-    todoComponent.setId('pat_id');
-    expect(todoComponent.user).toBeDefined();
-    expect(todoComponent.user.name).toBe('Pat');
-    expect(todoComponent.user.email).toBe('pat@something.com');
+  it('can retrieve Blanche by ID', () => {
+    todoComponent.setId('blanche_id');
+    expect(todoComponent.todo).toBeDefined();
+    expect(todoComponent.todo.name).toBe('Blanche');
+    expect(todoComponent.todo.status).toBe(false);
+    expect(todoComponent.todo.body).toBe("In sunt ex non tempor cillum commodo amet incididunt anim qui commodo quis. Cillum non labore ex sint esse.");
+    expect(todoComponent.todo.category).toBe("software design");
   });
 
   it('returns undefined for Santa', () => {
     todoComponent.setId('Santa');
-    expect(todoComponent.user).not.toBeDefined();
+    expect(todoComponent.todo).not.toBeDefined();
   });
 
 });
