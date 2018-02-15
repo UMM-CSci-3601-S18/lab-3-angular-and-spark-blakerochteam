@@ -69,8 +69,7 @@ export class TodoListComponent implements OnInit {
       });
     }
 
-    // return this.filteredTodos;
-    return this.todos;
+    return this.filteredTodos;
   }
 
   /**
