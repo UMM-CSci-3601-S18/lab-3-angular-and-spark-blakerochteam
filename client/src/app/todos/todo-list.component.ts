@@ -35,12 +35,12 @@ export class TodoListComponent implements OnInit {
 
     this.filteredTodos = this.todos;
 
-    // Filter by name
+    // Filter by owner
     if (searchAuthor != null) {
       searchAuthor = searchAuthor.toLocaleLowerCase();
 
       this.filteredTodos = this.filteredTodos.filter(todo => {
-        return !searchAuthor || todo.name.toLowerCase().indexOf(searchAuthor) !== -1;
+        return !searchAuthor || todo.owner.toLowerCase().indexOf(searchAuthor) !== -1;
       });
     }
 
@@ -60,11 +60,21 @@ export class TodoListComponent implements OnInit {
       });
     }
 
-    return this.filteredTodos;
+    // Filter by word/body
+    if(searchBody != null)
+    {
+      this.filteredTodos = this.filteredTodos.filter((todo: Todo) =>
+      {
+        return !searchBody || todo.body.toLowerCase().indexOf(searchBody) !== -1;
+      });
+    }
+
+    // return this.filteredTodos;
+    return this.todos;
   }
 
   /**
-   * Starts an asynchronous operation to update the users list
+   * Starts an asynchronous operation to update the todos list
    *
    */
   refreshTodos(): Observable<Todo[]> {
