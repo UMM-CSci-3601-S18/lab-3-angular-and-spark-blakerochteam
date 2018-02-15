@@ -16,13 +16,16 @@ import static spark.debug.DebugScreen.*;
 
 public class Server {
     public static final String USER_DATA_FILE = "src/main/data/users.json";
+    public static final String TODO_DATA_FILE = "src/main/data/todos.json";
+
+    private static Database todoDatabase;
     private static Database userDatabase;
 
     public static void main(String[] args) throws IOException {
         final Gson gson = new Gson();
 
         UserController userController = buildUserController();
-        ToDoController toDoController = new ToDoController();
+        ToDoController toDoController = buildTodoController();
 
         //Configure Spark
         port(4567);
@@ -66,6 +69,7 @@ public class Server {
 
         // See specific user
         get("api/users/:id", userController::getUser);
+
 
         /// Todos Endpoints //////////////////////////
         /////////////////////////////////////////////
@@ -131,6 +135,26 @@ public class Server {
         }
 
         return userController;
+    }
+
+    private static ToDoController buildTodoController() {
+      ToDoController todoController = null;
+
+      try {
+        todoDatabase = new Database(TODO_DATA_FILE);
+        todoController = new ToDoController();
+      }
+      catch(IOException e)
+      {
+        System.err.println("The server failed to load the todo data; shutting down.");
+        e.printStackTrace(System.err);
+
+        //Shut down the server
+        stop();
+        System.exit(1);
+      }
+
+      return todoController;
     }
 
     // Enable GZIP for all responses

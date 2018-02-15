@@ -17,22 +17,24 @@
           <input matInput id="todoCategory" #input placeholder="Filter by category" (input)="todoCategory = $event.target.value">
         </mat-form-field>
 
+        <mat-form-field>
+          <input matInput id="todoBody" #input placeholder="Filter by word" (input)="todoBody = $event.target.value">
+        </mat-form-field>
+
         <mat-accordion *ngIf="todos; else todosError">
-          <mat-expansion-panel #elem [id]="todo" *ngFor="let user of this.filterUsers(userName, userAge)">
-            <!--<mat-expansion-panel-header>
+          <mat-expansion-panel #elem [id]="todo" *ngFor="let todo of this.filterTodos(todoAuthor, todoStatus, todoCategory, todoBody)">
 
-              <mat-panel-title matTooltip="email: {{user.email}}">{{user.name}}</mat-panel-title>
-
-            </mat-expansion-panel-header>-->
-            <mat-panel-description>Works for {{user.company}}</mat-panel-description>
-            <mat-panel-description>Age: {{user.age}} years old</mat-panel-description>
+            <mat-panel-description>{{todo.name}} owns this.</mat-panel-description>
+            <mat-panel-description>Status: {{todo.status}} years old</mat-panel-description>
+            <mat-panel-description>{{todo.body}}</mat-panel-description>
+            <mat-panel-description>Category: {{todo.category}}</mat-panel-description>
 
           </mat-expansion-panel>
         </mat-accordion>
         <!-- Maybe this should be a pop-up instead of just a text message? Not sure. -->
-        <ng-template #usersError>
+        <ng-template #todosError>
           <mat-error>
-            There was a problem loading the users. Possibly the server is down or perhaps there are network
+            There was a problem loading the todos. Possibly the server is down or perhaps there are network
             issues.
           </mat-error>
           <mat-error>

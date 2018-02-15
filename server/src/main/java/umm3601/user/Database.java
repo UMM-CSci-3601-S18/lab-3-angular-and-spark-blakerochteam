@@ -1,5 +1,7 @@
 package umm3601.user;
 
+import umm3601.todo.ToDo;
+
 import com.google.gson.Gson;
 
 import java.io.FileReader;
@@ -18,11 +20,23 @@ import java.util.Map;
 public class Database {
 
   private User[] allUsers;
+  private ToDo[] allTodos;
 
   public Database(String userDataFile) throws IOException {
     Gson gson = new Gson();
     FileReader reader = new FileReader(userDataFile);
-    allUsers = gson.fromJson(reader, User[].class);
+
+    //If we are accessing users.
+    if(userDataFile.equals("src/main/data/users.json"))
+    {
+      allUsers = gson.fromJson(reader, User[].class);
+    }
+
+    //If we are accessing todos.
+    else if(userDataFile.equals("src/main/data/todos.json"))
+    {
+      allTodos = gson.fromJson(reader, ToDo[].class);
+    }
   }
 
   /**
