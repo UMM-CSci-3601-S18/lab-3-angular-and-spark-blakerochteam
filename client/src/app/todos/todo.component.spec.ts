@@ -11,35 +11,35 @@ describe('Todo component', () => {
   let fixture: ComponentFixture<TodoComponent>;
 
   let todoListServiceStub: {
-    getTodoById: (todoId: string) => Observable<Todo>
+    getTodosById: (todoId: string) => Observable<Todo>
   };
 
   beforeEach(() => {
     // stub TodoService for test purposes
     todoListServiceStub = {
-      getTodoById: (todoId: string) => Observable.of([
+      getTodosById: (todoId: string) => Observable.of([
         {
-          id: 'blanche_id',
+          _id: 'blanche_id',
           owner: 'Blanche',
           status: false,
           category: 'software design',
           body: 'In sunt ex non tempor cillum commodo amet incididunt anim qui commodo quis. Cillum non labore ex sint esse.'
         },
         {
-          id: 'pat_id',
-          owner: 'Pat',
+          _id: 'fry_id',
+          owner: 'Fry',
           status: true,
-          category: 'IBM',
-          body: 'pat@something.com'
+          category: 'Ullamco irure laborum magna dolor non. Anim occaecat adipisicing cillum eu magna in.',
+          body: 'homework'
         },
         {
-          id: 'jamie_id',
-          owner: 'Jamie',
+          _id: 'down_id',
+          owner: 'Down',
           status: false,
-          category: 'Frogs, Inc.',
-          body: 'jamie@frogs.com'
+          category: 'Officia nisi nulla eiusmod fugiat ex nulla amet reprehenderit velit. Ullamco elit non aliquip consectetur.',
+          body: 'groceries'
         }
-      ].find(todo => todo.id === todoId))
+      ].find(todo => todo._id === todoId))
     };
 
     TestBed.configureTestingModule({
