@@ -34,7 +34,7 @@ describe('Todo list', () => {
         page.typeAnOwner("f");
         expect(page.getUniqueTodo("58895985c1849992336c219b")).toEqual("Fry, VIDEO GAMES");
         page.backspace();
-        page.typeAnOwner("barry")
+        page.typeAnOwner("barry");
         expect(page.getUniqueTodo("588959856f0b82ee93cd93eb")).toEqual("Barry, VIDEO GAMES");
     });
 
@@ -42,18 +42,35 @@ describe('Todo list', () => {
     page.navigateTo();
     page.typeACategory("software");
     expect(page.getUniqueTodo("58895985a22c04e761776d54")).toEqual("Blanche, SOFTWARE DESIGN");
-    page.backspace();
-    page.typeACategory("groc")
+    for(let i = 0; i < 8; i++){
+      page.backspace();
+    }
+    page.typeACategory("groc");
     expect(page.getUniqueTodo("5889598555fbbad472586a56")).toEqual("Blanche, GROCERIES");
   });
 
-    // it('should click on the age 27 times and return 3 elements', () => {
-    //     page.navigateTo();
-    //     page.typeAnOwner("blanche");
-    //
-    //     expect(page.getUniqueTodo("58895985a22c04e761776d54")).toEqual("Blanche, SOFTWARE DESIGN ID: 58895985a22c04e761776d54");
-    //
-    //     expect(page.getUniqueTodo("58895985186754887e0381f5")).toEqual("Blanche, SOFTWARE DESIGN ID: 58895985186754887e0381f5");
-    //
-    // });
+  it('should type something in filter status box and check that it returned correct element', () => {
+    page.navigateTo();
+    page.typeAStatus(false);
+    expect(page.getUniqueTodo("58895985a22c04e761776d54")).toEqual("Blanche, SOFTWARE DESIGN");
+    for(let i = 0; i < 5; i++){
+      page.backspace();
+    }
+    page.typeAStatus(true);
+    expect(page.getUniqueTodo("58895985ae3b752b124e7663")).toEqual("Fry, HOMEWORK");
+  });
+
+  it('should type something in filter body box and check that it returned correct element', () => {
+    page.navigateTo();
+    page.typeABody("in sunt");
+    expect(page.getUniqueTodo("58895985a22c04e761776d54")).toEqual("Blanche, SOFTWARE DESIGN");
+    for(let i = 0; i < 7; i++){
+      page.backspace();
+    }
+    page.typeABody("deserunt veli");
+    expect(page.getUniqueTodo("58895985847a6c1445ec4048")).toEqual("Barry, HOMEWORK");
+  });
+
+
+
 });

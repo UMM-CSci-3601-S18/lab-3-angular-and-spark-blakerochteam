@@ -44,9 +44,12 @@ export class TodoPage {
     input.sendKeys(status.toString());
   }
 
-    selectUpKey() {
-        browser.actions().sendKeys(Key.ARROW_UP).perform();
-    }
+    typeABody(body: string) {
+    let input = element(by.id('todoBody'));
+    input.click();
+    input.sendKeys(body);
+  }
+
 
     backspace(){
         browser.actions().sendKeys(Key.BACK_SPACE).perform();
