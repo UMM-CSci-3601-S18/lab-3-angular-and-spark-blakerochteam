@@ -23,11 +23,11 @@
 
         <mat-accordion *ngIf="todos; else todosError">
           <mat-expansion-panel #elem [id]="todo._id" *ngFor="let todo of this.filterTodos(todoOwner, todoStatus, todoCategory, todoBody)">
-            <mat-expansion-panel-header>{{todo.owner}}, {{todo.category.toUpperCase()}}</mat-expansion-panel-header>
+            <mat-expansion-panel-header matTooltip="ID: {{todo._id}}">{{todo.owner}}, {{todo.category.toUpperCase()}}</mat-expansion-panel-header>
             <mat-panel-description>{{todo.owner}} owns this</mat-panel-description>
             <mat-panel-description>Completed: {{todo.status}}</mat-panel-description>
             <mat-panel-description>Category: {{todo.category}}</mat-panel-description>
-            <mat-panel-description>Body: {{todo.body}}</mat-panel-description>
+            <mat-panel-description>{{todo.body}}</mat-panel-description>
             <mat-panel-description>ID: {{todo._id}}</mat-panel-description>
 
 
