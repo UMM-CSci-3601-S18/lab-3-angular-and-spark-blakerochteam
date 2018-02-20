@@ -1,6 +1,6 @@
 #### Highlights Todo Name attribute
 
-We made this test to make sure that the client can see the the title "todos" on top of the page.
+We made this test to make sure that the client can see the the title "Todos" on top of the page.
 We checked this by checking whether the title at page is the same with what we are expecting.
 
 #### Check whether all fields are empty before inserting anything.
