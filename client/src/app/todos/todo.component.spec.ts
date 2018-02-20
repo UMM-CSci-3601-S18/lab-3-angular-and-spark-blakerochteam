@@ -36,8 +36,8 @@ describe('Todo component', () => {
           _id: 'down_id',
           owner: 'Down',
           status: false,
-          category: 'Officia nisi nulla eiusmod fugiat ex nulla amet reprehenderit velit. Ullamco elit non aliquip consectetur.',
-          body: 'groceries'
+          category: 'groceries',
+          body: 'Officia nisi nulla eiusmod fugiat ex nulla amet reprehenderit velit. Ullamco elit non aliquip consectetur.'
         }
       ].find(todo => todo._id === todoId))
     };
