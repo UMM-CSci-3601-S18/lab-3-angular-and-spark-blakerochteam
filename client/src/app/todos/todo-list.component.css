@@ -43,6 +43,8 @@ content, .mat-card-subtitle, .mat-card-title {
 .mat-input-container mat-form-field{
   color: blue;
 }
-
+.mat-expansion-panel:hover {
+  background: #c3e4ea;
+}
 
 

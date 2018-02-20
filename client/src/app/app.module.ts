@@ -19,6 +19,7 @@ import {UserComponent} from './users/user.component';
 import {TodoComponent} from './todos/todo.component';
 
 
+
 @NgModule({
   imports: [
     BrowserModule,
@@ -32,7 +33,8 @@ import {TodoComponent} from './todos/todo.component';
     UserListComponent,
     UserComponent,
     TodoListComponent,
-    TodoComponent
+    TodoComponent,
+
 
   ],
   providers: [
