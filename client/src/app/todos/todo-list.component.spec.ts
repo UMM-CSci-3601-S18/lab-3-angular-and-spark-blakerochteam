@@ -44,7 +44,7 @@ describe('Todo list', () => {
           owner: 'Blake',
           status: false,
           category: 'video games',
-          body: 'In sunt ex non tempor cillum commodo amet incididunt anim qui commodo quis. Cillum non labore ex sint esse.'
+          body: 'Some random stuff in latin'
         }
       ])
     };
@@ -72,22 +72,23 @@ describe('Todo list', () => {
     expect(todoList.todos.length).toBe(3);
   });
 
-  it('contains a todo named \'Blanche\'', () => {
+  it('contains a todo with owner \'Blanche\'', () => {
     expect(todoList.todos.some((todo: Todo) => todo.owner === 'Blanche')).toBe(true);
   });
 
-  it('contain a todo named \'Fry\'', () => {
+  it('contain a todo with owner \'Fry\'', () => {
     expect(todoList.todos.some((todo: Todo) => todo.owner === 'Fry')).toBe(true);
   });
 
-  it('doesn\'t contain a todo named \'Santa\'', () => {
+  it('doesn\'t contain a todo with owner \'Santa\'', () => {
     expect(todoList.todos.some((todo: Todo) => todo.owner === 'Santa')).toBe(false);
   });
 
-  it('has two todo that are in the video games category', () => {
+  it('has two todos that are in the video games category', () => {
     expect(todoList.todos.filter((todo: Todo) => todo.category === "video games").length).toBe(2);
   });
-  it('todo list filters by name', () => {
+
+  it('todo list filters by owner', () => {
     expect(todoList.filteredTodos.length).toBe(3);
     todoList.todoOwner = 'a';
     const a: Observable<Todo[]> = todoList.refreshTodos();
@@ -103,7 +104,23 @@ describe('Todo list', () => {
       .subscribe(x => expect(todoList.filteredTodos.length).toBe(1));
   });
 
-  it('todo list filters by name and status', () => {
+  it('todo list filters by body', () => {
+    expect(todoList.filteredTodos.length).toBe(3);
+    todoList.todoBody = "some random stuff ";
+    const a: Observable<Todo[]> = todoList.refreshTodos();
+    a.do(x => Observable.of(x))
+      .subscribe(x => expect(todoList.filteredTodos.length).toBe(1));
+  });
+
+  it('todo list filters by category', () => {
+    expect(todoList.filteredTodos.length).toBe(3);
+    todoList.todoCategory = "video games";
+    const a: Observable<Todo[]> = todoList.refreshTodos();
+    a.do(x => Observable.of(x))
+      .subscribe(x => expect(todoList.filteredTodos.length).toBe(2));
+  });
+
+  it('todo list filters by owner and status', () => {
     expect(todoList.filteredTodos.length).toBe(3);
     todoList.todoStatus = true;
     todoList.todoOwner = 'b';

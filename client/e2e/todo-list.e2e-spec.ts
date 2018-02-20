@@ -71,6 +71,26 @@ describe('Todo list', () => {
     expect(page.getUniqueTodo("58895985847a6c1445ec4048")).toEqual("Barry, HOMEWORK");
   });
 
+  it('should type something in filter owner box and status box and check that it returned correct element', () => {
+    page.navigateTo();
+    page.typeAnOwner("fry");
+    page.typeAStatus(false);
+    expect(page.getUniqueTodo("58895985c1849992336c219b")).toEqual("Fry, VIDEO GAMES");
+  });
+
+  it('should type something in filter owner box and category box and check that it returned correct element', () => {
+    page.navigateTo();
+    page.typeAnOwner("blanche");
+    page.typeACategory("groc");
+    expect(page.getUniqueTodo("5889598555fbbad472586a56")).toEqual("Blanche, GROCERIES");
+  });
+
+  it('should type something in filter category box and body box and check that it returned correct element', () => {
+    page.navigateTo();
+    page.typeACategory("groc");
+    page.typeABody("do ess");
+    expect(page.getUniqueTodo("588959856132e538dcfcf1b8")).toEqual("Roberta, GROCERIES");
+  });
 
 
 });
