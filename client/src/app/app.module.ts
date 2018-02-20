@@ -33,8 +33,7 @@ import {TodoComponent} from './todos/todo.component';
     UserListComponent,
     UserComponent,
     TodoListComponent,
-    TodoComponent,
-
+    TodoComponent
 
   ],
   providers: [
