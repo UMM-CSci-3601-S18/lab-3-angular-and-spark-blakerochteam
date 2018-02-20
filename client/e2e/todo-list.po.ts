@@ -26,6 +26,34 @@ export class TodoPage {
         return title;
     }
 
+  getTodoOwnerField() {
+    let field = element(by.id('todoOwner')).getText();
+    this.highlightElement(by.id('todoOwner'));
+
+    return field;
+  }
+
+  getTodoCategoryField() {
+    let field = element(by.id('todoCategory')).getText();
+    this.highlightElement(by.id('todoCategory'));
+
+    return field;
+  }
+
+  getTodoStatusField() {
+    let field = element(by.id('todoStatus')).getText();
+    this.highlightElement(by.id('todoStatus'));
+
+    return field;
+  }
+
+  getTodoBodyField() {
+    let field = element(by.id('todoBody')).getText();
+    this.highlightElement(by.id('todoBody'));
+
+    return field;
+  }
+
     typeAnOwner(owner: string) {
         let input = element(by.id('todoOwner'));
         input.click();

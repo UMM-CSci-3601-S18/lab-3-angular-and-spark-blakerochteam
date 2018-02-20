@@ -29,6 +29,14 @@ describe('Todo list', () => {
         expect(page.getTodoTitle()).toEqual('Todos');
     });
 
+  it('should check whether all of the fields are empty before entering anything', () => {
+    page.navigateTo();
+    expect(page.getTodoOwnerField()).toEqual('');
+    expect(page.getTodoCategoryField()).toEqual('');
+    expect(page.getTodoStatusField()).toEqual('');
+    expect(page.getTodoBodyField()).toEqual('');
+  });
+
     it('should type something in filter owner box and check that it returned correct element', () => {
         page.navigateTo();
         page.typeAnOwner("f");
@@ -91,6 +99,19 @@ describe('Todo list', () => {
     page.typeABody("do ess");
     expect(page.getUniqueTodo("588959856132e538dcfcf1b8")).toEqual("Roberta, GROCERIES");
   });
+
+  it('should type something in filter owner, status, caetgory and body box and check that it returned correct element', () => {
+    page.navigateTo();
+    page.typeAnOwner("Workman");
+    page.typeAStatus(false);
+    page.typeACategory("groceries")
+    page.typeABody("tempor");
+    expect(page.getUniqueTodo("588959854bfbbd101d622167")).toEqual("Workman, GROCERIES");
+    expect(page.getUniqueTodo("588959851a7fe4e2b50d9068")).toEqual("Workman, GROCERIES");
+    expect(page.getUniqueTodo("58895985554c936f063e044e")).toEqual("Workman, GROCERIES");
+  });
+
+
 
 
 });
